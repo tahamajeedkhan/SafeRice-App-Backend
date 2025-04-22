@@ -11,9 +11,9 @@ app = Flask(__name__)
 CORS(app)  # Allow cross-origin requests
 
 # Load the trained PyTorch model
-model_path = 'E:\\Trained Models\\new_rice_type_model_full.pth'  # Update this with your actual model path
+model_path = 'E:\\Final Year Project Final\\Trained Models\\new_rice_type_model_full.pth'  # Update this with your actual model path
 device = torch.device('cpu')  # Use 'cpu' or 'cuda' depending on your environment
-model = torch.load(model_path, map_location=device)
+model = torch.load(model_path, map_location=device, weights_only=False)
 model.eval()  # Set the model to evaluation mode
 
 # Define your disease classes (replace these with your actual class names)

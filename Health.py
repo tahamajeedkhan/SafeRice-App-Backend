@@ -9,10 +9,12 @@ from flask_cors import CORS  # CORS for cross-origin requests
 # Initialize Flask app
 app = Flask(__name__)
 CORS(app)  # Allow cross-origin requests
+CORS(app, origins="*") 
 
 # Load the trained PyTorch model
-model_path = 'E:\\Trained Models\\health_model_full.pth'  # Update this with your actual model path
-model = torch.load(model_path, map_location=torch.device('cpu'))
+model_path = 'E:\\Final Year Project Final\\Trained Models\\health_model_full.pth'  # Update this with your actual model path
+device = torch.device('cpu') 
+model = torch.load(model_path, map_location=device, weights_only=False)
 model.eval()  # Set the model to evaluation mode
 
 # Define your disease classes (replace these with your actual class names)

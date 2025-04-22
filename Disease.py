@@ -11,9 +11,10 @@ app = Flask(__name__)
 CORS(app)  # Allow cross-origin requests
 
 # Load the trained PyTorch model
-model_path = 'E:\\Trained Models\\disease_model_full.pth' 
+model_path = 'E:\\Final Year Project Final\\Trained Models\\disease_model_full.pth' 
 try:
-    model = torch.load(model_path, map_location=torch.device('cpu'))
+    device = torch.device('cpu') 
+    model = torch.load(model_path, map_location=device, weights_only=False)
     model.eval()  # Set the model to evaluation mode
 except Exception as e:
     print(f"Error loading model: {str(e)}")
